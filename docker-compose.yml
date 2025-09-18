@@ -1,13 +1,26 @@
 version: '3'
 services:
+  cache:
+    build: ./cache
+    networks:
+      - dave_network
+  database:
+    build: ./database
+    networks:
+      - dave_network
   web:
     build: ./web
+    networks:
+      - dave_network
     ports:
       - "8888:8080"
     depends_on:
       - database
       - cache 
-    database:
-      build: ./database
-    cache:
-      build: ./cache
+networks:
+  dave_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
+  

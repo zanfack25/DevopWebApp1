@@ -1,8 +1,8 @@
 # Python image as the base image (consider version 3.9)
-
+FROM python:3.9
 
 # Set the working directory inside the container as /app
-
+WORKDIR /app
 
 # Copy requirements.txt to the working directory
 COPY requirements.txt ./
@@ -17,3 +17,4 @@ COPY . .
 EXPOSE 8080
 
 # Define the command to start the web server
+CMD ["python","app.py"]
