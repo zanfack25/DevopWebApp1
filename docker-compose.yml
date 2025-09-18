@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    build: ./web
+    ports:
+      - "8888:8080"
+    depends_on:
+      - database
+      - cache 
+    database:
+      build: ./database
+    cache:
+      build: ./cache
